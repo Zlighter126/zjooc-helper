@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<style>
+  body { width: 330px; font: 13px/1.5 "Microsoft YaHei", system-ui, sans-serif; margin: 0; padding: 14px; color: #1f2329; }
+  h1 { font-size: 15px; margin: 0 0 10px; }
+  label { display: block; margin: 8px 0 3px; color: #4e5969; font-size: 12px; }
+  input[type=text], input[type=number] { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #d0d3d9; border-radius: 6px; font-size: 13px; }
+  .row { display: flex; gap: 8px; }
+  .row > div { flex: 1; }
+  .btns { display: flex; gap: 8px; margin-top: 12px; }
+  button { flex: 1; padding: 8px; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  #start { background: #1664ff; color: #fff; }
+  #stop { background: #f2f3f5; color: #1f2329; }
+  button:disabled { opacity: .5; cursor: default; }
+  #status { margin-top: 12px; padding: 8px; background: #f7f8fa; border-radius: 6px; font-size: 12px; white-space: pre-wrap; color: #4e5969; }
+  .hint { color: #86909c; font-size: 11px; margin-top: 8px; }
+</style>
+</head>
+<body>
+  <h1>ZJOOC 批量看课助手</h1>
+
+  <label>课程 ID</label>
+  <input id="cid" type="text" placeholder="自动从当前课程页读取" />
+
+  <div class="row">
+    <div>
+      <label>同时播放数</label>
+      <input id="concurrency" type="number" min="1" max="76" value="6" />
+    </div>
+    <div>
+      <label>倍速</label>
+      <input id="rate" type="number" min="1" max="16" step="0.5" value="2" />
+    </div>
+  </div>
+
+  <div class="btns">
+    <button id="start">开始</button>
+    <button id="stop">停止</button>
+  </div>
+
+  <div id="status">未运行</div>
+  <div class="hint">提示：开始前请先在本课程页面登录。播放的标签页会自动静音到极低音量（浏览器会暂停后台静音视频，故不能完全静音）。</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

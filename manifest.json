@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "ZJOOC 批量看课助手",
+  "version": "1.0.0",
+  "description": "批量打开在浙学(zjooc)课程章节中的所有视频，多标签页同时播放并自动记录学习进度。",
+  "permissions": ["tabs", "storage", "alarms"],
+  "host_permissions": ["https://www.zjooc.cn/*"],
+  "background": { "service_worker": "background.js" },
+  "web_accessible_resources": [
+    { "resources": ["page.js"], "matches": ["https://www.zjooc.cn/*"] }
+  ],
+  "action": {
+    "default_title": "ZJOOC 批量看课助手",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.zjooc.cn/*"],
+      "js": ["page.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://www.zjooc.cn/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ]
+}
